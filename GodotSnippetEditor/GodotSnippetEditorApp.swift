@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import AppKit
 
 @main
 struct GodotSnippetEditorApp: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(snippets: try! Snippets(snippetDir: "/tmp/codeblocks", translatedDir: "/Users/miguel/cvs/snippets-translated")!)
         }
     }
 }

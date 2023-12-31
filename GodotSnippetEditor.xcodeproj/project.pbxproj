@@ -11,6 +11,14 @@
 		49DD3B8E2B41B058001178FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD3B8D2B41B058001178FF /* ContentView.swift */; };
 		49DD3B902B41B059001178FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49DD3B8F2B41B059001178FF /* Assets.xcassets */; };
 		49DD3B932B41B059001178FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49DD3B922B41B059001178FF /* Preview Assets.xcassets */; };
+		49DD3B9B2B41B06B001178FF /* ProjectGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD3B9A2B41B06B001178FF /* ProjectGenerator.swift */; };
+		49DD3B9D2B41D0A4001178FF /* Snippets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD3B9C2B41D0A4001178FF /* Snippets.swift */; };
+		49DD3BA02B41D57D001178FF /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3B9F2B41D57D001178FF /* Collections */; };
+		49DD3BA22B41D57D001178FF /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3BA12B41D57D001178FF /* DequeModule */; };
+		49DD3BA42B41D57D001178FF /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3BA32B41D57D001178FF /* OrderedCollections */; };
+		49DD3BA72B420509001178FF /* STCompletion in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3BA62B420509001178FF /* STCompletion */; };
+		49DD3BA92B420509001178FF /* STTextView in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3BA82B420509001178FF /* STTextView */; };
+		49DD3BAF2B42052D001178FF /* NeonPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 49DD3BAE2B42052D001178FF /* NeonPlugin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +28,8 @@
 		49DD3B8F2B41B059001178FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49DD3B922B41B059001178FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49DD3B942B41B059001178FF /* GodotSnippetEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GodotSnippetEditor.entitlements; sourceTree = "<group>"; };
+		49DD3B9A2B41B06B001178FF /* ProjectGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectGenerator.swift; sourceTree = "<group>"; };
+		49DD3B9C2B41D0A4001178FF /* Snippets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +37,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DD3BA02B41D57D001178FF /* Collections in Frameworks */,
+				49DD3BAF2B42052D001178FF /* NeonPlugin in Frameworks */,
+				49DD3BA72B420509001178FF /* STCompletion in Frameworks */,
+				49DD3BA92B420509001178FF /* STTextView in Frameworks */,
+				49DD3BA22B41D57D001178FF /* DequeModule in Frameworks */,
+				49DD3BA42B41D57D001178FF /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,10 +69,12 @@
 			isa = PBXGroup;
 			children = (
 				49DD3B8B2B41B058001178FF /* GodotSnippetEditorApp.swift */,
+				49DD3B9C2B41D0A4001178FF /* Snippets.swift */,
 				49DD3B8D2B41B058001178FF /* ContentView.swift */,
 				49DD3B8F2B41B059001178FF /* Assets.xcassets */,
 				49DD3B942B41B059001178FF /* GodotSnippetEditor.entitlements */,
 				49DD3B912B41B059001178FF /* Preview Content */,
+				49DD3B9A2B41B06B001178FF /* ProjectGenerator.swift */,
 			);
 			path = GodotSnippetEditor;
 			sourceTree = "<group>";
@@ -85,6 +103,14 @@
 			dependencies = (
 			);
 			name = GodotSnippetEditor;
+			packageProductDependencies = (
+				49DD3B9F2B41D57D001178FF /* Collections */,
+				49DD3BA12B41D57D001178FF /* DequeModule */,
+				49DD3BA32B41D57D001178FF /* OrderedCollections */,
+				49DD3BA62B420509001178FF /* STCompletion */,
+				49DD3BA82B420509001178FF /* STTextView */,
+				49DD3BAE2B42052D001178FF /* NeonPlugin */,
+			);
 			productName = GodotSnippetEditor;
 			productReference = 49DD3B882B41B058001178FF /* GodotSnippetEditor.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +139,11 @@
 				Base,
 			);
 			mainGroup = 49DD3B7F2B41B058001178FF;
+			packageReferences = (
+				49DD3B9E2B41D57D001178FF /* XCRemoteSwiftPackageReference "swift-collections" */,
+				49DD3BA52B420509001178FF /* XCRemoteSwiftPackageReference "STTextView" */,
+				49DD3BAD2B42052D001178FF /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */,
+			);
 			productRefGroup = 49DD3B892B41B058001178FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +172,8 @@
 			files = (
 				49DD3B8E2B41B058001178FF /* ContentView.swift in Sources */,
 				49DD3B8C2B41B058001178FF /* GodotSnippetEditorApp.swift in Sources */,
+				49DD3B9B2B41B06B001178FF /* ProjectGenerator.swift in Sources */,
+				49DD3B9D2B41D0A4001178FF /* Snippets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +374,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49DD3B9E2B41D57D001178FF /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+		49DD3BA52B420509001178FF /* XCRemoteSwiftPackageReference "STTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:krzyzanowskim/STTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.22;
+			};
+		};
+		49DD3BAD2B42052D001178FF /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:krzyzanowskim/STTextView-Plugin-Neon.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49DD3B9F2B41D57D001178FF /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3B9E2B41D57D001178FF /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		49DD3BA12B41D57D001178FF /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3B9E2B41D57D001178FF /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		49DD3BA32B41D57D001178FF /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3B9E2B41D57D001178FF /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		49DD3BA62B420509001178FF /* STCompletion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3BA52B420509001178FF /* XCRemoteSwiftPackageReference "STTextView" */;
+			productName = STCompletion;
+		};
+		49DD3BA82B420509001178FF /* STTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3BA52B420509001178FF /* XCRemoteSwiftPackageReference "STTextView" */;
+			productName = STTextView;
+		};
+		49DD3BAE2B42052D001178FF /* NeonPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DD3BAD2B42052D001178FF /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */;
+			productName = NeonPlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49DD3B802B41B058001178FF /* Project object */;
 }
