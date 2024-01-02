@@ -102,14 +102,9 @@ struct RunView: View {
     }
 }
 
-struct Target: Hashable {
-    let container: String
-    let value: String
-}
-
 struct ContentView: View {
     let snippets: Snippets
-    @State var sel: Target?
+    @State var sel: String?
     @State var edited: AttributedString = ""
     @State private var selection: NSRange?
     @State var status = "OK"
@@ -120,7 +115,7 @@ struct ContentView: View {
             List (snippets.sourceTops.elements, id: \.key, selection: $sel) { key, values in
                 DisclosureGroup(key == "" ? "Global" : key) {
                     ForEach (values, id: \.self) { v in
-                        NavigationLink(v, value: Target (container: key, value: v))
+                        NavigationLink("\(v)", value: v)
                     }
                 }
             }
@@ -129,7 +124,7 @@ struct ContentView: View {
                 VStack {
                     ScrollView {
                         HStack {
-                            Text (snippets.load(container: sel.container, element: sel.value, isOriginal: true))
+                            Text (snippets.load(path: sel, isOriginal: true))
                                 .font(.system(.body, design: .monospaced, weight: .regular))
                                 .textSelection(.enabled)
                             Spacer ()
@@ -156,12 +151,15 @@ struct ContentView: View {
         }
         .onChange(of: sel) { oldValue, newSel in
             if let oldValue {
-                if !snippets.save (container: oldValue.container, element: oldValue.value, text: String (edited.characters)) {
-                    status = "Could not save the file for \(oldValue.container)/\(oldValue.value)"
+                let editedValue = String (edited.characters)
+                if editedValue != "" {
+                    if !snippets.save (path: oldValue, text: editedValue) {
+                        status = "Could not save the file for \(oldValue)"
+                    }
                 }
             }
             if let newSel {
-                edited = AttributedString (snippets.load(container: newSel.container, element: newSel.value, isOriginal: false))
+                edited = AttributedString (snippets.load(path: newSel, isOriginal: false))
                 selection = nil
                 textFocus = true
             }

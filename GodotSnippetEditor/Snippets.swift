@@ -21,25 +21,21 @@ class Snippets {
         self.translatedDir = translatedDir
         
         let fm = FileManager.default
-        sources = try fm.contentsOfDirectory(atPath: snippetDir)
-        targets = try fm.contentsOfDirectory(atPath: translatedDir)
+        sources = try fm.subpathsOfDirectory(atPath: snippetDir)
+        targets = try fm.subpathsOfDirectory(atPath: translatedDir)
         
         func split (_ dir: String, _ array: [String]) -> OrderedDictionary<String,[String]> {
             var res = OrderedDictionary<String,[String]> ()
             
             for element in array {
-                let r = element.split(separator: "--")
+                let r = element.split(separator: "/")
                 let key = r.count == 1 ? "" : String (r[0])
-                let value = r.count == 1 ? String (r[0]) : String (r[1])
                 
-                if key == "Node" {
-                    print ("aasdf")
-                }
                 if var existing = res [key] {
-                    existing.append (value)
+                    existing.append (element)
                     res [key] = existing
                 } else {
-                    res [key] = [(value)]
+                    res [key] = [(element)]
                 }
             }
             return res
@@ -48,16 +44,17 @@ class Snippets {
         targetTops = split (translatedDir, targets.sorted())
     }
     
-    func load (container: String, element: String, isOriginal: Bool) -> String {
+    func load (path: String, isOriginal: Bool) -> String {
         let dir = isOriginal ? snippetDir : translatedDir
-        return (try? String (contentsOfFile: "\(dir)/\(container)--\(element)")) ?? ""
+        return (try? String (contentsOfFile: "\(dir)/\(path)")) ?? ""
     }
 
-    func save (container: String, element: String, text: String) -> Bool {
-        let dir = translatedDir
-        
+    func save (path: String, text: String) -> Bool {
         do {
-            try text.write(toFile: "\(translatedDir)/\(container)--\(element)", atomically: true, encoding: .utf8)
+            let dir = NSString (string: path).deletingLastPathComponent
+            let fulldir = "\(translatedDir)/\(dir)"
+            try FileManager.default.createDirectory(atPath: fulldir, withIntermediateDirectories: true)
+            try text.write(toFile: "\(translatedDir)/\(path)", atomically: true, encoding: .utf8)
         } catch {
             return false
         }
